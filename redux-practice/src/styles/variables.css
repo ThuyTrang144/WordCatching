@@ -1,0 +1,22 @@
+:root {
+  /* text color */
+  --text-primary: #4A4B57;
+  --text-secondary: #1B4EA3;
+  --text-tertiary: #2979FF;
+  --text-light: #FFFFFF;
+  --text-warning: #FB8B24;
+  --text-light-warning: #D4AF37;
+  --text-success: #498246;
+  --text-danger: #FF4D4F;
+
+  /* background color */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #2979FF;
+  --bg-tertiary: #F0F0F1;
+
+  /* font size */
+  --fs-base: 16px;
+  --fs-xs: calc(var(--fs-base) - 2px);
+  --fs-md: calc(var(--fs-base) + 2px);
+  --fs-lg: calc(var(--fs-base) + 4px)
+}
