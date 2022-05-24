@@ -1,0 +1,36 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgb(234, 234, 239);
+  height: 100%;
+}
+
+.sidebar__add {
+  list-style-type: none;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.sidebar__add-link {
+  text-decoration: none;
+  color: rgb(102, 102, 135);
+  padding: auto;
+}
+
+.sidebar__add-text {
+  padding-left: 10px;
+}
+
+.sidebar__add:hover {
+  background-color: rgb(240, 240, 255);
+}
+
+.sidebar__add:active, :focus {
+  color: rgb(73, 69, 255);
+}
+
+.sidebar__user-panel {
+  width: 100%;
+}
