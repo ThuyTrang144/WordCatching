@@ -1,0 +1,23 @@
+.logo {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.logo__text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: var(--fs-xs);
+}
+
+.logo__text {
+  font-family: "Roboto-Bold";
+  padding-bottom: 5px;
+}
+
+.logo__image {
+  width: 60px;
+  height: 60px;
+}
