@@ -9,11 +9,18 @@
   --text-success: #498246;
   --text-danger: #FF4D4F;
 
+  /* border color */
+  --border-primary: rgb(234, 234, 239);
+
   /* background color */
   --bg-primary: #FFFFFF;
   --bg-secondary: #2979FF;
   --bg-tertiary: #F0F0F1;
 
+  /* hover color */ 
+  --hover-primary: rgb(240, 240, 255);
+  --hover-danger: #FCE1DF;
+  
   /* font size */
   --fs-base: 16px;
   --fs-xs: calc(var(--fs-base) - 2px);
