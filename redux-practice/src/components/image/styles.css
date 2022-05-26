@@ -1,0 +1,25 @@
+.image {
+  position: relative;
+}
+
+.image--circle {
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+}
+
+.image--circle-small {
+  width: 30px;
+  height: 30px; 
+}
+
+.image--circle-large {
+  width: 60px;
+  height: 60px;
+}
+
+.image--circle-hover {
+  position: absolute;
+  top: -64px;
+  z-index: 1;
+}

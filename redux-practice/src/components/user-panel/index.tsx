@@ -16,10 +16,7 @@ export default function UserPanel({
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const handleOpenMenu = () => {
-    setIsOpenMenu(true);
-    if (isOpenMenu) {
-      setIsOpenMenu(false);
-    }
+    setIsOpenMenu(!isOpenMenu);
   };
 
   // Handle loading for fetching username here

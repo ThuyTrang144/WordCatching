@@ -15,7 +15,7 @@
   /* background color */
   --bg-primary: #FFFFFF;
   --bg-secondary: #2979FF;
-  --bg-tertiary: #F0F0F1;
+  --bg-tertiary: rgb(246, 246, 249);
 
   /* hover color */ 
   --hover-primary: rgb(240, 240, 255);

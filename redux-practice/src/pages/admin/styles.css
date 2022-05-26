@@ -1,0 +1,14 @@
+.admin-page {
+  display: flex;
+  background-color: var(--bg-tertiary);
+  height: auto;
+}
+
+.admin-page__content {
+  flex: 80%;
+  padding: 40px;
+}
+
+.admin-page__sidebar {
+  flex: 15%;
+}

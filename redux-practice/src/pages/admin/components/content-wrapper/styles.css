@@ -1,0 +1,8 @@
+.content-wrapper__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-wrapper__body {
+  margin-top: 50px;
+}

@@ -17,7 +17,7 @@
             "jsx": true
         },
         "ecmaVersion": "latest",
-        "project": "./redux-practice/tsconfig.json"
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "react",

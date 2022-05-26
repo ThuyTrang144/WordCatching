@@ -1,0 +1,5 @@
+.question-table {
+  background-color: var(--bg-primary);
+  box-shadow: rgb(33 33 52 / 10%) 0px 1px 4px;
+  border-radius: 6px;
+}
