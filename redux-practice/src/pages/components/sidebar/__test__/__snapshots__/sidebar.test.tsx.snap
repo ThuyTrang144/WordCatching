@@ -75,7 +75,7 @@ exports[`Sidebar component matches snapshot 1`] = `
         data-testid="user-panel"
       >
         <button
-          class="user-panel__btn"
+          class="chakra-button user-panel__btn css-4xx2wk"
           data-testid="user-panel-btn"
           type="button"
         >

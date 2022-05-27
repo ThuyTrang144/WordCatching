@@ -8,7 +8,11 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     '@storybook/addon-viewport',
+    '@chakra-ui/storybook-addon',
   ],
+  features: {
+    emotionAlias: false,
+  },
   framework: "@storybook/react",
   webpackFinal: async (config) => {
     config.resolve.plugins = [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })];
