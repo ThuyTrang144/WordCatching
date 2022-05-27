@@ -1,0 +1,22 @@
+
+.user-panel__menu-item {
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.user-panel__menu-item--logout {
+  display: flex;
+  color: var(--text-danger);
+}
+
+.user-panel__menu-item--profile:hover {
+  background-color: var(--hover-primary);
+}
+
+.user-panel__menu-item--logout:hover {
+  background-color: var(--hover-danger);
+}
+
+.user-panel__logout-icon {
+  margin-left: 10px;
+}

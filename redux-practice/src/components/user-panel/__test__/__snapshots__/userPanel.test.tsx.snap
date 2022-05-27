@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserPanel component matches snapshot when having username 1`] = `
+<DocumentFragment>
+  <div
+    class="user-panel"
+  >
+    <div
+      class="user-panel__avt-group"
+      data-testid="user-panel"
+    >
+      <button
+        class="chakra-button user-panel__btn css-4xx2wk"
+        data-testid="user-panel-btn"
+        type="button"
+      >
+        <div
+          class="user-panel__avatar"
+        >
+          <span>
+            TN
+          </span>
+        </div>
+        <span
+          class="user-panel__username"
+          data-testid="username"
+        >
+          Trang Nguyen
+        </span>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`UserPanel component matches snapshot when username is undefined 1`] = `
+<DocumentFragment>
+  <div
+    class="user-panel"
+  >
+    <div
+      class="user-panel__avt-group"
+      data-testid="user-panel"
+    />
+  </div>
+</DocumentFragment>
+`;
