@@ -1,7 +1,7 @@
 :root {
   /* text color */
   --text-primary: #4A4B57;
-  --text-secondary: #1B4EA3;
+  --text-secondary: rgb(102, 102, 135);;
   --text-tertiary: #2979FF;
   --text-light: #FFFFFF;
   --text-warning: #FB8B24;
