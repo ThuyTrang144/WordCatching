@@ -3,13 +3,15 @@ import {
 } from "@chakra-ui/react";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import isEqual from "lodash.isequal";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface QuestionTableHeaderProps {
   questionTotal: number;
 }
 
-export default function QuestionTableHeader({ questionTotal }: QuestionTableHeaderProps) {
+const QuestionTableHeader = memo(({ questionTotal }: QuestionTableHeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -29,4 +31,6 @@ export default function QuestionTableHeader({ questionTotal }: QuestionTableHead
       </Button>
     </Flex>
   );
-}
+}, (prevProps, nextProps) => isEqual(prevProps.questionTotal, nextProps.questionTotal));
+
+export default QuestionTableHeader;

@@ -19,13 +19,20 @@ interface QuestionTableProps {
 }
 
 const QuestionTable = memo(({ questions }: QuestionTableProps) => {
-  const renderQuestionList = (list: Question[]) => (
-    list.map((item) => <QuestionItem question={item} key={item.id} />)
+  const renderQuestionList = (list: Question[] = []) => (
+    list.map((item, index) => (
+      <QuestionItem
+        question={item}
+        key={item.id}
+        index={index + 1}
+        deleteQuestion={() => {}}
+      />
+    ))
   );
 
   return (
     <TableContainer data-testid="question-table" className="question-table">
-      <QuestionTableHeader questionTotal={5} />
+      <QuestionTableHeader questionTotal={questions.length} />
       <Table variant="simple" className="question-table__content">
         <Thead>
           <Tr>

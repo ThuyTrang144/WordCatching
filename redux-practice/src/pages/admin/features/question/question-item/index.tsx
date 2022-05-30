@@ -8,15 +8,17 @@ import isEqual from "lodash.isequal";
 import { memo } from "react";
 
 interface QuestionItemProps {
+  index: number;
   question: Question;
+  deleteQuestion?: (id: string) => void;
 }
 
-const QuestionItem = memo(({ question }: QuestionItemProps) => (
+const QuestionItem = memo(({ question, index, deleteQuestion }: QuestionItemProps) => (
   <Tr className="question-item" data-testid="question-item">
     <Td>
       <Checkbox colorScheme="red" />
     </Td>
-    <Td>{question.id}</Td>
+    <Td>{index}</Td>
     <Td>
       <Image
         borderRadius="full"
@@ -38,6 +40,7 @@ const QuestionItem = memo(({ question }: QuestionItemProps) => (
         size="lg"
         variant="ghost"
         icon={<FontAwesomeIcon icon={faTrash} />}
+        onClick={() => deleteQuestion?.(question.id)}
       />
     </Td>
   </Tr>
