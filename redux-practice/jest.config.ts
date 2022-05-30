@@ -12,6 +12,7 @@ const config: Config.InitialOptions = {
     "^@common-types(.*)$": "<rootDir>/src/common-types$1",
     "^@assets(.*)$": "<rootDir>/src/assets$1",
     "^@app(.*)$": "<rootDir>/src/app$1",
+    "^pages(.*$": "<rootDir>/src/pages$1",
     "^@root(.*)$": "<rootDir>/src$1",
   },
   transform: {

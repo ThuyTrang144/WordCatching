@@ -1,6 +1,4 @@
-import QuestionTableHeader from "./question-table-header";
-import QuestionItem from "../question-item";
-import { useDeleteQuestionMutation } from "../../api/apiSlice";
+import isEqual from "lodash.isequal";
 import {
   Table,
   Thead,
@@ -12,7 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { Question } from "@common-types/question";
 import { memo } from "react";
-import isEqual from "lodash.isequal";
+import QuestionTableHeader from "./question-table-header";
+import QuestionItem from "../question-item";
+import { useDeleteQuestionMutation } from "../../api/apiSlice";
 import "./styles.css";
 
 interface QuestionTableProps {
@@ -35,7 +35,7 @@ const QuestionTable = memo(({ questions }: QuestionTableProps) => {
 
   return (
     <TableContainer data-testid="question-table" className="question-table">
-      <QuestionTableHeader questionTotal={questions.length} />
+      <QuestionTableHeader questionTotal={questions?.length ?? 0} />
       <Table variant="simple" className="question-table__content">
         <Thead>
           <Tr>

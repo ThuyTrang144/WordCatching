@@ -1,9 +1,9 @@
+import { Flex } from "@chakra-ui/react";
+import { Routes, Route, Outlet } from "react-router-dom";
 import SideBar from "./components/sidebar";
 import QuestionTable from "./features/question/question-table";
 import QuestionForm from "./features/question/question-form";
 import { useAddNewQuestionMutation, useGetQuestionsQuery } from "./features/api/apiSlice";
-import { Flex } from "@chakra-ui/react";
-import { Routes, Route, Outlet } from "react-router-dom";
 
 export default function AdminPage() {
   const {
@@ -18,10 +18,7 @@ export default function AdminPage() {
     <Flex justifyContent="space-between" height="100vh">
       <SideBar />
       <Routes>
-        <Route
-          path="/"
-          element={<Outlet />}
-        />
+        <Route path="/" element={<Outlet />} />
         <Route index element={<QuestionTable questions={questions} />} />
         <Route
           path="/question-adding-form"

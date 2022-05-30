@@ -50,6 +50,7 @@ export const apiSlice = createApi({
 
 export const {
   useGetQuestionsQuery,
+  useGetQuestionQuery,
   useAddNewQuestionMutation,
   useDeleteQuestionMutation,
   useUpdateQuestionMutation,

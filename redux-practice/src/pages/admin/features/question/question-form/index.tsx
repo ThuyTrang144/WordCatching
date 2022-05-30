@@ -1,19 +1,23 @@
-import FormHeader from "./form-header";
+import { v4 as uuidv4 } from "uuid";
 import isEqual from "lodash.isequal";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 import {
-  Button, FormControl, FormErrorMessage,
-  FormLabel, Input, Image, IconButton, useToast,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Image,
+  IconButton,
+  useToast,
 } from "@chakra-ui/react";
 import { Question } from "@common-types/question";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik, Form } from "formik";
-import {
-  memo, useState, ChangeEvent,
-} from "react";
+import { memo, useState, ChangeEvent } from "react";
+import FormHeader from "./form-header";
 import "./styles.css";
-import { v4 as uuidv4 } from "uuid";
 
 interface QuestionFormProps {
   title: string;
@@ -69,8 +73,8 @@ function QuestionForm({ title, formData, addNewQuestion }: QuestionFormProps) {
                 onImageRemove,
                 isDragging,
                 dragProps,
-              }) => (
-                imageList.length ? imageList.map((image, index) => (
+              }) => (imageList.length ? (
+                imageList.map((image, index) => (
                   <div className="add-form__upload-image" key={image.id}>
                     <Image src={image.dataURL} alt={image.alt} />
                     <IconButton
@@ -80,23 +84,27 @@ function QuestionForm({ title, formData, addNewQuestion }: QuestionFormProps) {
                       onClick={() => onImageRemove(index)}
                     />
                   </div>
-                )) : (
-                  <Button
-                    className="add-form__upload"
-                    color={isDragging ? "red" : undefined}
-                    onClick={onImageUpload}
-                    {...dragProps}
-                  >
-                    Click to add an image or drag and drop one in this area
-                  </Button>
-                )
-              )}
+                ))
+              ) : (
+                <Button
+                  className="add-form__upload"
+                  color={isDragging ? "red" : undefined}
+                  onClick={onImageUpload}
+                  {...dragProps}
+                >
+                  Click to add an image or drag and drop one in this area
+                </Button>
+              ))}
             </ImageUploading>
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="answer">Answer</FormLabel>
-            <Input id="answer" placeholder="Enter answer" onChange={onChangeAnswer} />
-            <FormErrorMessage>{ }</FormErrorMessage>
+            <Input
+              id="answer"
+              placeholder="Enter answer"
+              onChange={onChangeAnswer}
+            />
+            <FormErrorMessage>{}</FormErrorMessage>
           </FormControl>
         </div>
       </Form>
@@ -106,6 +114,6 @@ function QuestionForm({ title, formData, addNewQuestion }: QuestionFormProps) {
 
 export default memo(
   QuestionForm,
-  (prevProps, nextProps) => (isEqual(prevProps.formData, nextProps.formData)
-  && isEqual(prevProps.title, nextProps.title)),
+  (prevProps, nextProps) => isEqual(prevProps.formData, nextProps.formData)
+    && isEqual(prevProps.title, nextProps.title),
 );

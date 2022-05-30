@@ -1,7 +1,7 @@
-import Menu from "./Menu";
 import { getFirstLettersBySpace } from "@helpers/string";
 import { useState } from "react";
 import { Button } from "@chakra-ui/react";
+import Menu from "./Menu";
 import "./styles.css";
 
 export interface UserPanelProps {
