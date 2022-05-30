@@ -1,5 +1,6 @@
 import QuestionTableHeader from "./question-table-header";
 import QuestionItem from "../question-item";
+import { useDeleteQuestionMutation } from "../../api/apiSlice";
 import {
   Table,
   Thead,
@@ -15,17 +16,19 @@ import isEqual from "lodash.isequal";
 import "./styles.css";
 
 interface QuestionTableProps {
-  questions: Question[];
+  questions?: Question[];
 }
 
 const QuestionTable = memo(({ questions }: QuestionTableProps) => {
+  const [deleteQuestion] = useDeleteQuestionMutation();
+
   const renderQuestionList = (list: Question[] = []) => (
     list.map((item, index) => (
       <QuestionItem
         question={item}
         key={item.id}
         index={index + 1}
-        deleteQuestion={() => {}}
+        deleteQuestion={deleteQuestion}
       />
     ))
   );
