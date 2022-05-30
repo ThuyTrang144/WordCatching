@@ -11,9 +11,11 @@ import { Question } from "@common-types/question";
 import { memo } from "react";
 import isEqual from "lodash.isequal";
 import QuestionItem from "../question-item";
+import QuestionTableHeader from "./question-table-header";
+import "./styles.css";
 
 interface QuestionTableProps {
-  questions: Question[]
+  questions: Question[];
 }
 
 const QuestionTable = memo(({ questions }: QuestionTableProps) => {
@@ -22,8 +24,9 @@ const QuestionTable = memo(({ questions }: QuestionTableProps) => {
   );
 
   return (
-    <TableContainer data-testid="question-table">
-      <Table variant="simple">
+    <TableContainer data-testid="question-table" className="question-table">
+      <QuestionTableHeader questionTotal={5} />
+      <Table variant="simple" className="question-table__content">
         <Thead>
           <Tr>
             <Th><Checkbox colorScheme="red" /></Th>

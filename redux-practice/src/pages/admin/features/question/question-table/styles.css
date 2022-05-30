@@ -1,5 +1,8 @@
 .question-table {
-  background-color: var(--bg-primary);
-  box-shadow: rgb(33 33 52 / 10%) 0px 1px 4px;
-  border-radius: 6px;
+  width: 100%;
+  padding: 20px 40px;
+}
+
+.question-table__content {
+  margin-top: 50px;
 }

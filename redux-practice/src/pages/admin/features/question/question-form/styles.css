@@ -1,0 +1,49 @@
+.add-form__body {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+  margin-top: 50px;
+  justify-content: space-between;
+  background-color: var(--bg-primary);
+  border-radius: 4px;
+  box-shadow: rgb(33 33 52 / 10%) 0px 1px 4px;
+}
+
+.add-form__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-form__upload-container {
+  background-color: #EDF2F7;
+  border-radius: 6px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.add-form__upload {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.add-form__upload-image {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-form__upload-icon {
+  font-size: var(--fs-lg);
+}
+
+.add-form__container {
+  width: 100%;
+  padding: 20px 40px;
+}

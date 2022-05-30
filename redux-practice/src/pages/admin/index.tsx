@@ -1,27 +1,22 @@
 import { QUESTION_LIST } from "@constants/question";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ContentWrapper from "./components/content-wrapper";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
 import SideBar from "./components/sidebar";
 import QuestionTable from "./features/question/question-table";
-import "./styles.css";
+import QuestionForm from "./features/question/question-form";
 
 export default function AdminPage() {
   return (
-    <div className="admin-page">
+    <Flex justifyContent="space-between" height="100vh">
       <SideBar />
-      <main className="admin-page__content">
-        <ContentWrapper
-          title="Questions"
-          note="1 item found"
-          button={{
-            name: "Create new item",
-            icon: <FontAwesomeIcon icon={faPlus} />,
-          }}
-        >
-          <QuestionTable questions={QUESTION_LIST} />
-        </ContentWrapper>
-      </main>
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<Outlet />}
+        />
+        <Route index element={<QuestionTable questions={QUESTION_LIST} />} />
+        <Route path="/question-adding-form" element={<QuestionForm title="Create new question" />} />
+      </Routes>
+    </Flex>
   );
 }

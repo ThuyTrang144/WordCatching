@@ -1,8 +1,14 @@
+import AdminPage from "@pages/admin";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App" data-testid="app" />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin/*" element={<AdminPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

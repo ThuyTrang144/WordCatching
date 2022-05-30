@@ -14,9 +14,7 @@ export default {
 // 👇 We create a “template” of how args map to rendering
 // eslint-disable-next-line react/function-component-definition
 const Template: ComponentStory<typeof QuestionTable> = (args) => (
-  <div style={{ marginTop: "50px" }}>
-    <QuestionTable {...args} />
-  </div>
+  <QuestionTable {...args} />
 );
 
 // 👇 Each story then reuses that template
