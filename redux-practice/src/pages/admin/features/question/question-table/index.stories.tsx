@@ -1,6 +1,6 @@
+import QuestionTable from ".";
 import { QUESTION_LIST } from "@constants/question";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import QuestionTable from ".";
 
 export default {
   /* 👇 The title prop is optional.

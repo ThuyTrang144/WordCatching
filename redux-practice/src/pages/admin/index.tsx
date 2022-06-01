@@ -1,9 +1,9 @@
-import { QUESTION_LIST } from "@constants/question";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { Flex } from "@chakra-ui/react";
 import SideBar from "./components/sidebar";
 import QuestionTable from "./features/question/question-table";
 import QuestionForm from "./features/question/question-form";
+import { QUESTION_LIST } from "@constants/question";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
 
 function AdminPage() {
   return (

@@ -1,3 +1,5 @@
+import QuestionTableHeader from "./question-table-header";
+import QuestionItem from "../question-item";
 import {
   Table,
   Thead,
@@ -10,8 +12,6 @@ import {
 import { Question } from "@common-types/question";
 import { memo } from "react";
 import isEqual from "lodash.isequal";
-import QuestionItem from "../question-item";
-import QuestionTableHeader from "./question-table-header";
 import "./styles.css";
 
 interface QuestionTableProps {

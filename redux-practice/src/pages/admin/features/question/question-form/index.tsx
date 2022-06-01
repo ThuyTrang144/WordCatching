@@ -1,16 +1,16 @@
+import FormHeader from "./form-header";
+import isEqual from "lodash.isequal";
+import ImageUploading, { ImageListType } from "react-images-uploading";
 import {
   Button, FormControl, FormErrorMessage,
   FormLabel, Input, Image, IconButton,
 } from "@chakra-ui/react";
-import ImageUploading, { ImageListType } from "react-images-uploading";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Question } from "@common-types/question";
-import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik, Form } from "formik";
-import "./styles.css";
 import { memo, useState } from "react";
-import isEqual from "lodash.isequal";
-import FormHeader from "./form-header";
+import "./styles.css";
 
 interface QuestionFormProps {
   title: string;
@@ -18,9 +18,8 @@ interface QuestionFormProps {
   addNewQuestion?: (question: Question) => void;
 }
 
-const QuestionForm = memo(({ title, formData, addNewQuestion }: QuestionFormProps) => {
-  const [images, setImage] = useState<ImageListType>([]);
-  const [answer, setAnswer] = useState(formData?.answer);
+function QuestionForm({ title, formData }: QuestionFormProps) {
+  const [images] = useState<ImageListType>([]);
 
   return (
     <Formik
@@ -71,7 +70,10 @@ const QuestionForm = memo(({ title, formData, addNewQuestion }: QuestionFormProp
       </Form>
     </Formik>
   );
-}, (prevProps, nextProps) => (isEqual(prevProps.formData, nextProps.formData)
-  && isEqual(prevProps.title, nextProps.title)));
+}
 
-export default QuestionForm;
+export default memo(
+  QuestionForm,
+  (prevProps, nextProps) => (isEqual(prevProps.formData, nextProps.formData)
+  && isEqual(prevProps.title, nextProps.title)),
+);
