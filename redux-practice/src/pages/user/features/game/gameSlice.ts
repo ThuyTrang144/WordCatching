@@ -7,7 +7,7 @@ interface GameResultState {
 }
 
 const initialState: GameResultState = {
-  score: 0,
+  score: 100,
   level: 1,
 };
 
@@ -15,11 +15,10 @@ const gameResultSlice = createSlice({
   name: "gameResult",
   initialState,
   reducers: {
-    passLevel: (state: GameResultState) => {
-      state.level += 1;
-      state.score += 100;
-      console.log("state.level", state.level);
-    },
+    passLevel: (state: GameResultState) => ({
+      level: state.level + 1,
+      score: state.score + 100,
+    }),
   },
 });
 

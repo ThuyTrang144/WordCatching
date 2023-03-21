@@ -3,7 +3,10 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import SideBar from "./components/sidebar";
 import QuestionTable from "./features/question/question-table";
 import QuestionForm from "./features/question/question-form";
-import { useAddNewQuestionMutation, useGetQuestionsQuery } from "./features/api/apiSlice";
+import {
+  useAddNewQuestionMutation,
+  useGetQuestionsQuery,
+} from "./features/api/apiSlice";
 
 export default function AdminPage() {
   const {
@@ -15,7 +18,7 @@ export default function AdminPage() {
   if (isError) return <div>{(error as any).error}</div>;
 
   return (
-    <Flex justifyContent="space-between" height="100vh">
+    <Flex justifyContent="space-between">
       <SideBar />
       <Routes>
         <Route path="/" element={<Outlet />} />
@@ -27,7 +30,15 @@ export default function AdminPage() {
               title="Create new question"
               addNewQuestion={addNewQuestion}
             />
-            )}
+          )}
+        />
+        <Route
+          path="/edit-question"
+          element={(
+            <QuestionForm
+              title="Edit question"
+            />
+          )}
         />
       </Routes>
     </Flex>

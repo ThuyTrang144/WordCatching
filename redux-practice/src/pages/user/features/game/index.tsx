@@ -10,7 +10,7 @@ import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AnswerBox from "./answer-box";
-import { passLevel, selectGameResult } from "./gameSlice";
+import { selectGameResult } from "./gameSlice";
 import Keyboard from "./keyboard";
 
 interface GameProps {
@@ -22,7 +22,7 @@ interface GameProps {
 function Game() {
   const { data: questions } = useGetQuestionsQuery();
   const { level } = useSelector(selectGameResult);
-  console.log("level in question", level);
+  console.log("level in question", level, questions);
   const [question, setQuestion] = useState(questions?.[level]);
 
   const navigate = useNavigate();
@@ -48,7 +48,8 @@ function Game() {
     }));
     setAnswerBoxArr(initialAnswerBox);
     setKeyArr(keyBoardCharacterArr);
-  }, [questions, question]);
+    setQuestion(questions?.[level]);
+  }, [questions, question, level]);
   // Array of each character of answer for rendering virtual keyboard
 
   const pushAnswerCharacter = (item: BoxItem, index: number) => {

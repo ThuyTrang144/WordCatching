@@ -2,9 +2,9 @@ import {
   Box, Button, Flex, Text,
 } from "@chakra-ui/react";
 import { BACKGROUND_COLOR_GRADIENT } from "@constants/background";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { passLevel } from "../gameSlice";
+import { passLevel, selectGameResult } from "../gameSlice";
 
 interface ResultProps {
   answer: string;
@@ -13,6 +13,8 @@ interface ResultProps {
 export default function Result({ answer }: ResultProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { score } = useSelector(selectGameResult);
+  console.log("score", score);
   const handlePassLevel = () => {
     dispatch(passLevel());
     navigate("/game/play");
@@ -35,7 +37,7 @@ export default function Result({ answer }: ResultProps) {
           color="purple"
           fontWeight={700}
         >
-          Xuất sắc
+          Excellent
         </Box>
         <Text
           fontSize="4xl"
@@ -48,7 +50,7 @@ export default function Result({ answer }: ResultProps) {
           fontSize="4xl"
           fontWeight={700}
         >
-          {`Your score: ${1}`}
+          {`Your score: ${score}`}
         </Text>
       </Flex>
       <Flex gap={50}>
@@ -63,7 +65,7 @@ export default function Result({ answer }: ResultProps) {
           size="lg"
           onClick={handlePassLevel}
         >
-          Tiếp tục
+          Continue
         </Button>
       </Flex>
     </Flex>

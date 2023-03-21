@@ -12,11 +12,11 @@ function AnswerBox({
   answerBoxArr,
   removeAnswerCharacter,
 }: AnswerBoxProps) {
-  console.log("answerBox", answerBoxArr);
   const renderAnswerBox = () => (
     answerBoxArr.map((item, index) => (
       <Button
         cursor="pointer"
+        key={item.keyboardIndex}
         borderRadius="md"
         bg="teal"
         color="white"

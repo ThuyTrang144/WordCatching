@@ -12,7 +12,7 @@ import { Question } from "@common-types/question";
 import { memo } from "react";
 import QuestionTableHeader from "./question-table-header";
 import QuestionItem from "../question-item";
-import { useDeleteQuestionMutation } from "../../api/apiSlice";
+import { useDeleteQuestionMutation, useUpdateQuestionMutation } from "../../api/apiSlice";
 import "./styles.css";
 
 interface QuestionTableProps {
@@ -21,6 +21,7 @@ interface QuestionTableProps {
 
 const QuestionTable = memo(({ questions }: QuestionTableProps) => {
   const [deleteQuestion] = useDeleteQuestionMutation();
+  const [updateQuestion] = useUpdateQuestionMutation();
 
   const renderQuestionList = (list: Question[] = []) => (
     list.map((item, index) => (
@@ -29,6 +30,7 @@ const QuestionTable = memo(({ questions }: QuestionTableProps) => {
         key={item.id}
         index={index + 1}
         deleteQuestion={deleteQuestion}
+        editQuestion={updateQuestion}
       />
     ))
   );

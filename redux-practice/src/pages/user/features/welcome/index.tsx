@@ -26,7 +26,7 @@ export default function Welcome() {
         size="lg"
         onClick={() => navigate("/game/play")}
       >
-        Bắt đầu
+        Start
       </Button>
     </Flex>
   );
