@@ -1,5 +1,6 @@
 import { QUESTION_LIST } from "@constants/question";
 import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 import QuestionTable from "..";
 
 describe("Question Table component", () => {

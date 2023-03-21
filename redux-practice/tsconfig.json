@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,13 +17,14 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@*": ["./*"],
-    }
+      "@*": ["./*"]
+    },
+    // "types": ["node", "jest", "@testing-library/jest-dom"],
   },
   "include": [
     "src",
-    "jest.config.ts", 
+    "jest.config.ts",
     "config-overrides.js",
-    "src/setupTests.ts" 
-   ]
+    "src/setupTests.ts"
+  ]
 }
