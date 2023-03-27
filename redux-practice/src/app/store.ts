@@ -1,10 +1,12 @@
 import { apiSlice } from "@pages/admin/features/api/apiSlice";
 import gameResultReducer from "@pages/user/features/game/gameSlice";
+import questionReducer from "@pages/admin/questionSlice";
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
     gameResult: gameResultReducer,
+    questions: questionReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware: any) => getDefaultMiddleware().concat(apiSlice.middleware),

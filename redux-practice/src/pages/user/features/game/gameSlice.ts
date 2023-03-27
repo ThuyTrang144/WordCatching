@@ -7,7 +7,7 @@ interface GameResultState {
 }
 
 const initialState: GameResultState = {
-  score: 100,
+  score: 0,
   level: 1,
 };
 

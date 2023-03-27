@@ -7,14 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { passLevel, selectGameResult } from "../gameSlice";
 
 interface ResultProps {
-  answer: string;
+  answer?: string;
 }
 
 export default function Result({ answer }: ResultProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { score } = useSelector(selectGameResult);
-  console.log("score", score);
   const handlePassLevel = () => {
     dispatch(passLevel());
     navigate("/game/play");

@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 interface FormHeaderProps {
   title: string;
+  isLoading: boolean;
 }
 
-const FormHeader = memo(({ title }: FormHeaderProps) => {
+const FormHeader = memo(({ title, isLoading }: FormHeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -28,6 +29,8 @@ const FormHeader = memo(({ title }: FormHeaderProps) => {
       <Button
         colorScheme="blue"
         type="submit"
+        isLoading={isLoading}
+        isDisabled={isLoading}
         leftIcon={(
           <FontAwesomeIcon
             icon={faCheck}
@@ -38,6 +41,6 @@ const FormHeader = memo(({ title }: FormHeaderProps) => {
       </Button>
     </Flex>
   );
-}, (prevProps, nextProps) => isEqual(prevProps.title, nextProps.title));
+});
 
 export default FormHeader;

@@ -1,21 +1,32 @@
-import { Flex } from "@chakra-ui/react";
 import { Routes, Route, Outlet } from "react-router-dom";
-import SideBar from "./components/sidebar";
+import { useSelector } from "react-redux";
+
+// Components
+import ErrorMessage from "@components/ErrorMessage";
+import LoadingIndicator from "@components/LoadingIndicator";
+import { Flex } from "@chakra-ui/react";
+
 import QuestionTable from "./features/question/question-table";
 import QuestionForm from "./features/question/question-form";
-import {
-  useAddNewQuestionMutation,
-  useGetQuestionsQuery,
-} from "./features/api/apiSlice";
+
+// Slice
+import { selectQuestions } from "./questionSlice";
+
+// Types
+import SideBar from "./components/sidebar";
+import { useQuestions } from "./api/useQuestions";
 
 export default function AdminPage() {
-  const {
-    data: questions, isLoading, isError, error,
-  } = useGetQuestionsQuery();
-  const [addNewQuestion] = useAddNewQuestionMutation();
+  const { questions } = useSelector(selectQuestions);
+  const { error, addQuestion } = useQuestions();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>{(error as any).error}</div>;
+  if (error) {
+    return <ErrorMessage message="Cannot get questions" />;
+  }
+
+  if (questions.length === 0) {
+    return <LoadingIndicator />;
+  }
 
   return (
     <Flex justifyContent="space-between">
@@ -28,17 +39,15 @@ export default function AdminPage() {
           element={(
             <QuestionForm
               title="Create new question"
-              addNewQuestion={addNewQuestion}
+              addNewQuestion={addQuestion}
             />
           )}
         />
         <Route
           path="/edit-question"
-          element={(
-            <QuestionForm
-              title="Edit question"
-            />
-          )}
+          element={
+            <QuestionForm title="Edit question" />
+          }
         />
       </Routes>
     </Flex>

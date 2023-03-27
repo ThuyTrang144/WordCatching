@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from "uuid";
-import isEqual from "lodash.isequal";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 import {
   Button,
@@ -14,7 +13,7 @@ import {
 import { Question } from "@common-types/question";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormik } from "formik";
 import { memo, useState, ChangeEvent } from "react";
 import FormHeader from "./form-header";
 import "./styles.css";
@@ -38,6 +37,18 @@ function QuestionForm({ title, formData, addNewQuestion }: QuestionFormProps) {
     setAnswer(event.target.value);
   };
 
+  const handleAddQuestionSuccess = () => {
+    toast({
+      title: "Create new question successfully",
+      status: "success",
+      isClosable: true,
+      position: "top",
+    });
+
+    setAnswer("");
+    setImage([]);
+  };
+
   const handleSubmitFormData = async () => {
     if (addNewQuestion) {
       const newQuestion = {
@@ -47,73 +58,66 @@ function QuestionForm({ title, formData, addNewQuestion }: QuestionFormProps) {
           src: images[0].dataURL,
         },
       };
-      await addNewQuestion(newQuestion).unwrap();
-      toast({
-        title: "Create new question successfully",
-        status: "success",
-        isClosable: true,
-        position: "top",
-      });
+      await addNewQuestion(newQuestion, handleAddQuestionSuccess);
     }
   };
 
   return (
     <Formik
-      initialValues={{ answer: formData?.answer || "" }}
+      initialValues={{ answer: "" }}
       onSubmit={handleSubmitFormData}
     >
-      <Form className="add-form__container">
-        <FormHeader title={title} />
-        <div className="add-form__body">
-          <FormControl className="add-form__upload-container">
-            <ImageUploading onChange={onChangeImage} value={images}>
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (imageList.length ? (
-                imageList.map((image, index) => (
-                  <div className="add-form__upload-image" key={image.id}>
-                    <Image src={image.dataURL} alt={image.alt} />
-                    <IconButton
-                      colorScheme="red"
-                      aria-label="Search database"
-                      icon={<FontAwesomeIcon icon={faTrash} />}
-                      onClick={() => onImageRemove(index)}
-                    />
-                  </div>
-                ))
-              ) : (
-                <Button
-                  className="add-form__upload"
-                  color={isDragging ? "red" : undefined}
-                  onClick={onImageUpload}
-                  {...dragProps}
-                >
-                  Click to add an image or drag and drop one in this area
-                </Button>
-              ))}
-            </ImageUploading>
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel htmlFor="answer">Answer</FormLabel>
-            <Input
-              id="answer"
-              placeholder="Enter answer"
-              onChange={onChangeAnswer}
-            />
-            <FormErrorMessage>{}</FormErrorMessage>
-          </FormControl>
-        </div>
-      </Form>
+      {({ isSubmitting }) => (
+        <Form className="add-form__container">
+          <FormHeader title={title} isLoading={isSubmitting} />
+          <div className="add-form__body">
+            <FormControl className="add-form__upload-container">
+              <ImageUploading onChange={onChangeImage} value={images}>
+                {({
+                  imageList,
+                  onImageUpload,
+                  onImageRemove,
+                  isDragging,
+                  dragProps,
+                }) => (imageList.length ? (
+                  imageList.map((image, index) => (
+                    <div className="add-form__upload-image" key={image.id}>
+                      <Image src={image.dataURL} alt={image.alt} />
+                      <IconButton
+                        colorScheme="red"
+                        aria-label="Search database"
+                        icon={<FontAwesomeIcon icon={faTrash} />}
+                        onClick={() => onImageRemove(index)}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <Button
+                    className="add-form__upload"
+                    color={isDragging ? "red" : undefined}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                  >
+                    Click to add an image or drag and drop one in this area
+                  </Button>
+                ))}
+              </ImageUploading>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="answer">Answer</FormLabel>
+              <Input
+                id="answer"
+                placeholder="Enter answer"
+                onChange={onChangeAnswer}
+                value={answer}
+              />
+              <FormErrorMessage>{}</FormErrorMessage>
+            </FormControl>
+          </div>
+        </Form>
+      )}
     </Formik>
   );
 }
 
-export default memo(
-  QuestionForm,
-  (prevProps, nextProps) => isEqual(prevProps.formData, nextProps.formData)
-    && isEqual(prevProps.title, nextProps.title),
-);
+export default memo(QuestionForm);
